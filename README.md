@@ -1,2 +1,10 @@
 # 4IZ460
-Spotify dataset data mining for 4IZ460 at the Prague University of Economics.
+Datamining Spotify datasetu pro předmět 4IZ460.
+
+## Analytické otázky
+1.	Mají taneční skladby výrazně větší hitový potenciál? Mění se tento potenciál v závislosti na dekádě?
+2.	Jaké faktory nejvíce korelují s faktem, že se skladba stala hitem?
+3.	Existuje vazba valence (pozitivity/negativity) na období, která se vyznačují negativními událostmi (např. 2008, 2001)?
+4.	Existuje konkrétní tónina/skupina tónin, která výrazně převažuje mezi hity?
+5.	Jak moc ovlivňuje instrumentálnost, přítomnost mluveného slova a způsob nahrávání skladeb jejich výslednou popularitu?
+6.	Jaké faktory určují, zda autor dosáhl vysokého počtu hitů za svou kariéru?
