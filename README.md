@@ -18,3 +18,6 @@ pip install spotipy
 pip install cleverminer==0.082
 pip install spotipy
 pip install pprint
+
+## Odkazy
+Spotify API - https://developer.spotify.com/dashboard/
