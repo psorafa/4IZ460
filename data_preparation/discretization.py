@@ -1,12 +1,14 @@
 import os
 import pandas as pd
 import sys
+import matplotlib.pyplot as plt
 
 dirname = os.path.dirname(__file__)
 
 print(sys.argv[1])
 
 outpath = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_categorised.csv")
+outpath_histograms = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "histograms")
 
 frame = pd.read_csv(sys.argv[1])
 
@@ -48,5 +50,21 @@ for column in discretize_linear_five_bins:
 
 print(frame.describe())
 print(frame)
+
+for (column, type) in frame.dtypes.iteritems():
+    
+    if "_cat" not in column:
+        continue
+    
+    print(frame[column])
+    cats = frame[column].cat.categories.tolist()
+
+    frame[column].value_counts()[cats].plot(kind='bar')
+
+    #frame[column].plot(kind='bar') #, dpi=199, rot=0, figsize=(10,6)
+
+    plt.tight_layout()
+    plt.savefig(os.path.join(outpath_histograms, column + ".png"))
+    plt.close()
 
 frame.to_csv(outpath, index=False)
