@@ -16,9 +16,10 @@ Ve složce data se nachází dataset z [Kaggle](https://www.kaggle.com/theoverma
 
 ```python
 pip install spotipy
-pip install cleverminer==0.082
+pip install cleverminer
 pip install spotipy
 pip install pprint
+pip install -U scikit-learn
 ```
 
 ## Odkazy
