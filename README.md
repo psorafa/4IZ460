@@ -22,6 +22,11 @@ pip install pprint
 pip install -U scikit-learn
 ```
 
+```
+python data_preparation/merge.py
+python data_preparation/discretization.py output_data/dataset_merged_with_eras.csv
+```
+
 ## Odkazy
 Spotify API - https://developer.spotify.com/dashboard/
 
@@ -40,3 +45,13 @@ min        0.000000      0.000000      0.000251      0.000000    -49.253000     
 75%    30828.750000      0.669000      0.787000      8.000000     -6.374250      1.000000      0.069800      0.676000          0.061250      0.261000      0.768000    136.494000  2.667730e+05        4.000000     47.625615     12.000000      1.000000     80.000000
 max    41105.000000      0.988000      1.000000     11.000000      3.744000      1.000000      0.960000      0.996000          1.000000      0.999000      0.996000    241.423000  4.170227e+06        5.000000    433.182000    169.000000      1.000000     90.000000
 ```
+
+### Analýza z histogramů
+* potřeba diskretizovat jinak než ekvidistančně
+    * duration_ms - outliery
+    * chorus hit - outliery; asi by šlo vztáhnout k tomu duration jako procento
+    * instrumentalness - potřeba rozdělit první "sloupeček" na více a ty vyšší naopak spojit
+    * liveness - podobné
+    * loudness - outliery (co znamená -50 loudness? :D)
+    * sections - outliery
+    * speechiness - outliery

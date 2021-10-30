@@ -33,4 +33,4 @@ for (dirpath, dirnames, filenames) in os.walk(path):
 
 result = pd.concat(frames,ignore_index=True)
 print(result)
-result.to_csv(outpath)
+result.to_csv(outpath, index=False)
