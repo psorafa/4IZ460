@@ -11,6 +11,11 @@ import numpy as np
 
 # ... jiný model
 
+df = pd.read_csv (sys.argv[1])
+
+########### Do nějakého přeformátování kódu to zatím nechávám zde. Je v tom bordeeeel.
+sys.exit()
+
 
 # Mění se tento potenciál v závislosti na dekádě?
 
