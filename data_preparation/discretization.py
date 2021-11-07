@@ -53,7 +53,7 @@ print(frame)
 
 for (column, type) in frame.dtypes.iteritems():
     
-    if "_cat" not in column:
+    if ("_cat" not in column):
         continue
     
     print(frame[column])
@@ -61,10 +61,12 @@ for (column, type) in frame.dtypes.iteritems():
 
     frame[column].value_counts()[cats].plot(kind='bar')
 
+    plt.title(column)
+
     #frame[column].plot(kind='bar') #, dpi=199, rot=0, figsize=(10,6)
 
     plt.tight_layout()
     plt.savefig(os.path.join(outpath_histograms, column + ".png"))
     plt.close()
 
-frame.to_csv(outpath, index=False)
+#frame.to_csv(outpath, index=False)
