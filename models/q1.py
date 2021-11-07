@@ -1,4 +1,3 @@
-from posixpath import dirname
 import pandas as pd
 import sys
 from cleverminer.cleverminer import cleverminer

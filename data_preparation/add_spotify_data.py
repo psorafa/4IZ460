@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 import sys
-import matplotlib.pyplot as plt
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import time
@@ -31,14 +30,10 @@ frame["spotify_album_uri"] = "?"
 frame["spotify_artist_count"] = "?"
 frame["spotify_track_type"] = "?"
 frame["spotify_num_markets"] = "?"
-frame["spotify_num_markets"] = "?"
 
 for index, row in frame.iterrows():
-    if index < 23651:
-        continue
-
     if index > 0 and index % 10 == 0:
-        frame.to_csv(outpath)
+        frame.to_csv(outpath) # pro jistotu - cokoliv nečekaného...
         time.sleep(0.05)
 
     track = sp.track(row["uri"])
