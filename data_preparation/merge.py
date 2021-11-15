@@ -5,9 +5,11 @@ import re
 
 dirname = os.path.dirname(__file__)
 path = os.path.join(dirname, '..' + os.sep + 'data' + os.sep)
-outpath = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_merged_with_eras.csv")
+outpath1 = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_merged_with_eras_pt1.csv")
+outpath2 = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_merged_with_eras_pt2.csv")
 
-frames = []
+frames1 = []
+frames2 = []
 
 for (dirpath, dirnames, filenames) in os.walk(path):
 
@@ -27,10 +29,16 @@ for (dirpath, dirnames, filenames) in os.walk(path):
 
             frame["era"] = era[0]
 
-            frames.append(frame)
+            if era[0] == '80' or era[0] == '90':
+                frames1.append(frame)
+            if era[0] == '00' or era[0] == '10':
+                frames2.append(frame)
 
     break
 
-result = pd.concat(frames,ignore_index=True)
-print(result)
-result.to_csv(outpath, index=False)
+result1 = pd.concat(frames1,ignore_index=True)
+result2 = pd.concat(frames2,ignore_index=True)
+print(result1)
+print(result2)
+result1.to_csv(outpath1, index=False)
+result2.to_csv(outpath2, index=False)

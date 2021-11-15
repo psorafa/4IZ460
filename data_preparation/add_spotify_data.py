@@ -9,6 +9,8 @@ sp = spotipy.Spotify(
     auth_manager=SpotifyClientCredentials(
         client_id=os.environ.get("SPOTIFY_CLIENT_ID"),
         client_secret=os.environ.get("SPOTIFY_CLIENT_SECRET")
+        #client_id='8fa7fd8c937847b8a85a549155713d01',
+        #client_secret='301e22bcd4764bef877db63a8ca0c3e2'
     )
 )
 
@@ -16,7 +18,7 @@ dirname = os.path.dirname(__file__)
 
 print(sys.argv[1])
 
-outpath = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_spotify_added2.csv")
+outpath = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_spotify_added.csv")
 
 frame = pd.read_csv(sys.argv[1])
 
