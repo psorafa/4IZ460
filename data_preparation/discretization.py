@@ -6,12 +6,12 @@ import matplotlib.pyplot as plt
 
 dirname = os.path.dirname(__file__)
 
-print(sys.argv[1])
+# print(sys.argv[1])
 
-outpath = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_categorised_pt1.csv")
+outpath = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "dataset_categorised_2.csv")
 outpath_barcharts = os.path.join(dirname, '..' + os.sep + 'output_data' + os.sep, "barchartsCategorised")
 
-frame = pd.read_csv(sys.argv[1])
+frame = pd.read_csv("./output_data/dataset_merged_with_eras.csv")
 
 def discretize_linear(df, column, bins):
     df[column + "_cat"] = pd.cut(df[column], bins, include_lowest=True)
@@ -39,7 +39,7 @@ discretize_linear(frame, "tempo", [66, 76, 108, 120, 168, 208])
 # 0.6 and greater indicate solid chances the track was performed live, anything nearing 1 was very likely performed live, between 0.4 and 0.6 it's basically "half", anything below that is certainly a studio recording
 discretize_linear(frame, "liveness", [0, 0.4, 0.6, 0.8, 1])
 
-# todo tady ještě bude potřeba přežehlit hodnoty - žádné mínusové by se tam neměly objevovat
+# hodnota -1 je ve skutecnosti 0
 discretize_linear(frame, "instrumentalness", [-1, 0, 0.1, 0.4, 0.7, 0.9, 1])
 
 # Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks. 
@@ -112,4 +112,4 @@ for (column, type) in frame.dtypes.iteritems():
     plt.savefig(os.path.join(outpath_barcharts, column + ".png"), facecolor = facecolor)
     plt.close()
 
-#frame.to_csv(outpath, index=False)
+frame.to_csv(outpath, index=False)

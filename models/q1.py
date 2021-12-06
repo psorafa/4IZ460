@@ -4,23 +4,13 @@ from cleverminer.cleverminer import cleverminer
 import matplotlib.pyplot as plt
 import os
 import numpy as np
+from histogram import draw_hist
 
 # Mají taneční skladby výrazně větší hitový potenciál?
-
-
-# ... jiný model
-
-df = pd.read_csv (sys.argv[1])
-
-########### Do nějakého přeformátování kódu to zatím nechávám zde. Je v tom bordeeeel.
-sys.exit()
-
-
 # Mění se tento potenciál v závislosti na dekádě?
 
-print(sys.argv[1])
-
-df = pd.read_csv (sys.argv[1])
+# print(sys.argv[1])
+df = pd.read_csv ("./output_data/dataset_categorised.csv")
 
 # jinak CFMiner předpřipraví sloupečky které jsou nominální, což trvá dlouho
 
@@ -51,7 +41,7 @@ hypo = cleverminer(
             {'name': 'danceability_cat', 'type': 'rcut', 'minlen': 2, 'maxlen': 2},
             {'name': 'hit', 'type': 'subset', 'minlen': 1, 'maxlen': 1}
         ],
-        'minlen':2,
+        'minlen':2, # minlen 2 tady nenašlo žádnou hypotézu - tak nevim kde je chyba
         'maxlen':2,
         'type':'con'
     }
@@ -59,16 +49,6 @@ hypo = cleverminer(
 
 res = hypo.result
 #print(res.taskinfo)
-
-def draw_hist(filename, label, values, categories, xlabel, ylabel):
-    plt.bar(categories, values)
-    plt.title(label)
-    plt.xlabel(xlabel)
-    plt.ylabel(ylabel)
-
-    plt.savefig(filename)
-
-    plt.clf()
 
 hist = []
 titles = []
@@ -110,8 +90,12 @@ ax.legend(
     bbox_to_anchor=(1.1, 1.05)
 )
 
+eras.insert(0,0)
+ax.set_xticklabels(eras)
+
 plt.xlabel('Eras')
 plt.ylabel('# Of tracks')
+plt.title('Mají taneční skladby výrazně větší hitový potenciál?')
 
 plt.legend(loc='best')
 plt.savefig(os.path.join(current_dir, "q1", "histograms", "side-by-side.png"))
