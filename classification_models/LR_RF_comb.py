@@ -9,8 +9,9 @@ from sklearn.metrics import roc_auc_score
 import sklearn.metrics as metrics
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-all_tracks = pd.read_csv("./output_data/dataset_categorised_pt1.csv")
+all_tracks = pd.read_csv("./output_data/dataset_categorised_2.csv")
 
 features = ['danceability', 'energy', 'key', 'loudness',
        'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness',
@@ -40,6 +41,8 @@ plot_confusion_matrix(model_RF, X_test, y_test, cmap=plt.cm.Blues, ax = ax2)
 ax1.set(title='LinR')
 ax2.set(title='RandF')
 plt.show()
+# plt.savefig("Confusion matrices RF and LR")
+# plt.clf()
 
 y_test_probs = model_LR_cv.predict_proba(X_test)[:, 1]
 fpr, tpr, thresholds = roc_curve(y_test, y_test_probs)
@@ -61,5 +64,5 @@ roc_auc = roc_auc_score(y_test, y_test_probs)
 plt.plot(fpr, tpr, color='lime',
          lw=lw, label='Random Forest ROC (area = %0.2f)' % roc_auc)
 plt.legend(loc="lower right")
+#plt.savefig("ROC curves for RF and LR")
 plt.show()
-
