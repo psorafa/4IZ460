@@ -1,0 +1,17 @@
+                  Feature importance
+Variable                            
+instrumentalness            0.163390
+acousticness                0.109149
+danceability                0.103994
+energy                      0.081486
+loudness                    0.075516
+speechiness                 0.075474
+valence                     0.075360
+duration_s                  0.074212
+tempo                       0.054006
+liveness                    0.051748
+chorus_hit                  0.050921
+sections                    0.037771
+key                         0.029434
+mode                        0.010421
+time_signature              0.007118
