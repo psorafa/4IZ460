@@ -38,11 +38,16 @@ hypo = cleverminer(
     df = relevant_df,
     target = 'valence_cat',
     proc = 'CFMiner',
-    quantifiers = {'S_Down':4, 'Base': 500}, # valence_cat má 5 hodnot, base je zvolena tak, aby pokryla alespoň 1% skladeb v celém datasetu
+    quantifiers = {'S_Down':4, 'Base': 500}, 
+    # valence_cat má 5 hodnot, base je zvolena tak, aby pokryla alespoň 1% skladeb v celém datasetu
     cond = {
         'attributes': [
-            {'name': 'year', 'type': 'seq', 'minlen': 1, 'maxlen': 3}, # časové období které může být relevantní je těžké určit, ale musí být sekvenční. recese běžně trvají spíše 2 až 3 roky, politické krize spíše méně než rok, ve sledovaném období nebyl na relevantních trzích žádný dlouhodobý konflikt, tak kompromis 2-3 je asi v pořádku.
-            {'name': 'hit', 'type': 'subset', 'minlen': 1, 'maxlen': 1} # 
+            {'name': 'year', 'type': 'seq', 'minlen': 1, 'maxlen': 3}, 
+            # časové období které může být relevantní je těžké určit, ale musí být sekvenční. 
+            # recese běžně trvají spíše 2 až 3 roky, politické krize spíše méně než rok, 
+            # ve sledovaném období nebyl na relevantních trzích žádný dlouhodobý konflikt, 
+            # tak kompromis 2-3 je asi v pořádku.
+            {'name': 'hit', 'type': 'subset', 'minlen': 1, 'maxlen': 1}
         ],
         'minlen':1,
         'maxlen':2,

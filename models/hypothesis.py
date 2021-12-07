@@ -1,5 +1,6 @@
 from matplotlib.pyplot import draw
 from fourfold import draw_heatmap
+from fourfold import draw_double_fourfold
 import os
 import numpy as np
 
@@ -34,6 +35,11 @@ class HypothesisWraper:
             values1 = np.array(self.hypothesis["params"]["fourfold1"]).reshape(2,2)
             values2 = np.array(self.hypothesis["params"]["fourfold2"]).reshape(2,2)
             values = np.hstack((values1,values2))  # zajisti rozlozeni ktere chceme
+            draw_double_fourfold(os.path.join(current_dir, self.q, "double_fourfolds", filename),
+            ant + "-> " + suc, 
+            np.array(self.hypothesis["params"]["fourfold1"]),
+            np.array(self.hypothesis["params"]["fourfold2"]))
+
 
         # draw_fourfold(
         draw_heatmap(

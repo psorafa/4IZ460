@@ -103,10 +103,10 @@ def draw_double_fourfold(filename, label, fourfold1, fourfold2) :
     tb.add_cell(1, 4, width=width, height=height, text=fourfold2[1], loc='center', facecolor="#39a05d", fontproperties=font)
 
     tb.add_cell(2, 0, width=width, height=height, text="-A", loc='center')
-    tb.add_cell(2, 1, width=width, height=height, text=fourfold1[2], loc='center', facecolor="#1DB954", fontproperties=font)
-    tb.add_cell(2, 2, width=width, height=height, text=fourfold1[3], loc='center', facecolor="#39a05d", fontproperties=font)
-    tb.add_cell(2, 3, width=width, height=height, text=fourfold2[2], loc='center', facecolor="#1DB954", fontproperties=font)
-    tb.add_cell(2, 4, width=width, height=height, text=fourfold2[3], loc='center', facecolor="#39a05d", fontproperties=font)
+    tb.add_cell(2, 1, width=width, height=height, text=fourfold1[2], loc='center', facecolor="#478778", fontproperties=font)
+    tb.add_cell(2, 2, width=width, height=height, text=fourfold1[3], loc='center', facecolor="#008080", fontproperties=font)
+    tb.add_cell(2, 3, width=width, height=height, text=fourfold2[2], loc='center', facecolor="#478778", fontproperties=font)
+    tb.add_cell(2, 4, width=width, height=height, text=fourfold2[3], loc='center', facecolor="#008080", fontproperties=font)
 
     ax.add_table(tb)
 

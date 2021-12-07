@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 import os
+import matplotlib.pyplot as plt
 
 # 2.	Jaké faktory nejvíce korelují s faktem, že se skladba stala hitem?
 
@@ -21,8 +22,9 @@ X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.25,random_state=4
 
 model_RF = RandomForestClassifier()
 model_RF.fit(X_train, y_train)
-
 all_songs_feat = model_RF.feature_importances_
+
+
 df_indep_columns = pd.DataFrame(features)
 df_all_songs_feat = pd.DataFrame(all_songs_feat)
 all_songs_feat_vars = pd.concat([df_indep_columns, df_all_songs_feat], axis = 1)
@@ -35,3 +37,7 @@ outpath = os.path.join(os.path.dirname(__file__) + os.sep + 'q2', "q2_features.t
 outfile = open(outpath, "w")
 outfile.writelines(all_songs_feat_vars.to_string(header=True, index=True))
 outfile.close()
+
+all_songs_feat_vars.plot(kind='bar', color = "purple", title = "Most important features for predicting hit songs for all decades", legend = None)
+plt.ylabel('Feature importance')
+plt.show()

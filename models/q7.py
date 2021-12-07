@@ -7,23 +7,22 @@ import numpy as np
 from hypothesis import HypothesisWraper
 from hypothesis import draw_double_fourfolds_greatest_deltapim
 
-#,track,artist,uri,danceability,energy,key,loudness,mode,speechiness,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature,chorus_hit,sections,hit,era,sections_cat,chorus_hit_pct,chorus_hit_pct_cat,time_signature_cat,duration_s,duration_s_cat,tempo_cat,
-# ,,,loudness_cat,acousticness_cat,danceability_cat,energy_cat,key_cat,valence_cat,spotify_explicit,spotify_track_number,spotify_release_date,spotify_disc_number,spotify_album_total_tracks,spotify_album_type,spotify_album_uri,spotify_artist_count,spotify_track_type,spotify_num_markets
+# takto položená otázka bude dávat lepší sm
 
 df = pd.read_csv(
     "./output_data/dataset_categorised_2.csv",
-    usecols=["danceability_cat", "instrumentalness_cat", "acousticness_cat", "duration_s_cat", "hit"],
+    usecols=["danceability_cat", "instrumentalness_cat", "acousticness_cat", "era", "hit"],
     dtype={
         "danceability_cat": "category",
         "instrumentalness_cat": "category",
         "acousticness_cat": "category",
-        "duration_s_cat": "category",
+        "era": "category",
         "hit": "int64"
     }
 )
 
 hypo = cleverminer(df=df,proc='SD4ftMiner',
-    quantifiers= {'Base1':100, 'Base2':100, 'Deltapim' : 0.55},
+    quantifiers= {'Base1':200, 'Base2':200, 'Deltapim' : 0.4},
     ante ={
          'attributes':[
             {'name': 'danceability_cat', 'type': 'seq', 'minlen': 1, 'maxlen': 3},
@@ -40,11 +39,11 @@ hypo = cleverminer(df=df,proc='SD4ftMiner',
         ], 'minlen':1, 'maxlen':1, 'type':'con'},
     frst ={
         'attributes':[
-            {'name': 'duration_s_cat', 'type': 'seq', 'minlen': 1, 'maxlen': 2}
+            {'name': 'era', 'type': 'subset', 'minlen': 1, 'maxlen': 3}
         ], 'minlen':1, 'maxlen':1, 'type':'con'},
     scnd ={
        'attributes':[
-            {'name': 'duration_s_cat', 'type': 'seq', 'minlen': 1, 'maxlen': 2}
+            {'name': 'era', 'type': 'subset', 'minlen': 1, 'maxlen': 3}
         ], 'minlen':1, 'maxlen':1, 'type':'con'}
     )
 

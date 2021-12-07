@@ -29,8 +29,9 @@ discretize_linear(frame, "chorus_hit_pct", 5)
 discretize_linear(frame, "time_signature", [0, 3.99, 4])
 
 # v Pandas se to pak neformátuje ve vědecké notaci - tj. je to jednodušší přečíst
+# oříznuto zleva - nejmenší interval
 frame["duration_s"] = frame["duration_ms"] / 1000
-discretize_linear(frame, "duration_s", [0, 60, 120, 180, 240, 300, 1000])
+discretize_linear(frame, "duration_s", [60, 120, 180, 240, 300, 1000])
 
 # https://cs.wikipedia.org/wiki/Beats_per_minute
 # tady jsem to ořezala o krajní intervaly

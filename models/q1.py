@@ -10,7 +10,7 @@ from histogram import draw_hist
 # Mění se tento potenciál v závislosti na dekádě?
 
 # print(sys.argv[1])
-df = pd.read_csv ("./output_data/dataset_categorised.csv")
+df = pd.read_csv ("./output_data/dataset_categorised_2.csv")
 
 # jinak CFMiner předpřipraví sloupečky které jsou nominální, což trvá dlouho
 
